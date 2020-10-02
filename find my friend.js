@@ -1,8 +1,8 @@
 // ==UserScript==
 // @name         В поисках Стаса
 // @namespace    https://vk.com/
-// @version      0.1
-// @description  Вы потеряли стаса в диалогах Вк? Не беда! этот скрипт поможет вам с легкостью его найти.
+// @version      0.2
+// @description  Вы потеряли стаса в диалогах Вк? Не беда! этот скрипт поможет вам с легкостью его найти. (наверное)
 // @author       Setoko
 // @match        https://vk.com/im
 // @grant        none
@@ -13,18 +13,24 @@
 
 // активация скрипта после загрузки страницы
     window.addEventListener('load', function () {
-        addButton('Стас', findHim)
+        addButton(findHim)
     })
 
-    function addButton(text, onclick, cssObj) {
-        cssObj = cssObj || {position: 'absolute', bottom: '90.5%', right:'42%', 'z-index': 3}
-        let button = document.createElement('button'), btnStyle = button.style
-        document.body.appendChild(button)
-        button.innerHTML = text
+    function addButton(onclick) {
+        // ссылка на бокс
+        let location = document.querySelector('.im-page--dialogs-header-controls._im_dialogs_header_controls')
+        // создаем саму кнопку
+        let button = document.createElement('button')
+        location.prepend(button)
+        // настройка визуала кнопки
+        button.classList.add('im-page--dialogs-header-control')
+        // функционал кнопки
+        button.innerHTML = "<img src='https://i.imgur.com/AHi4B6Y.png'>";
         button.onclick = onclick
-        Object.keys(cssObj).forEach(key => btnStyle[key] = cssObj[key])
+
         return button
     }
+
     function findHim() {
         alert('hemllo')
     }
