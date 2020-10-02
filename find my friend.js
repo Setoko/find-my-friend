@@ -4,7 +4,7 @@
 // @version      0.2
 // @description  Вы потеряли стаса в диалогах Вк? Не беда! этот скрипт поможет вам с легкостью его найти. (наверное)
 // @author       Setoko
-// @match        https://vk.com/im
+// @match        https://vk.com/im*
 // @grant        none
 // ==/UserScript==
 
@@ -32,6 +32,6 @@
     }
 
     function findHim() {
-        alert('hemllo')
+        document.location.href = "https://vk.com/im?sel=351198695"
     }
 }())
