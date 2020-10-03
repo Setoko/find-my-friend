@@ -8,23 +8,25 @@
 // @grant        none
 // ==/UserScript==
 
-addButton(findHim)
+addButton(findHim);
 
 function addButton(onclick) {
+
     // ссылка на бокс
-    let location = document.querySelector('.im-page--dialogs-header-controls._im_dialogs_header_controls')
+    let location = document.querySelector('.im-page--dialogs-header-controls._im_dialogs_header_controls');
+
     // создаем саму кнопку
-    let button = document.createElement('button')
-    location.prepend(button)
+    let button = document.createElement('button');
+    location.prepend(button);
+    button.onclick = onclick;
+    button.classList.add('im-page--dialogs-header-control');
+
     // настройка визуала кнопки
-    button.classList.add('im-page--dialogs-header-control')
-    // функционал кнопки
     button.innerHTML = "<img src='https://i.imgur.com/AHi4B6Y.png'>";
-    button.onclick = onclick
 
     return button
 }
 
 function findHim() {
-    document.location.href = "https://vk.com/im?sel=351198695"
+    document.location.href = "https://vk.com/im?sel=351198695";
 }
