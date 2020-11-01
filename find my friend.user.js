@@ -1,32 +1,31 @@
 // ==UserScript==
 // @name         В поисках Стаса
 // @namespace    https://vk.com/
-// @version      0.2.1
+// @version      0.2.2
 // @description  Вы потеряли стаса в диалогах Вк? Не беда! этот скрипт поможет вам с легкостью его найти. (наверное)
 // @author       Setoko
-// @match        https://vk.com/im*
+// @match        https://vk.com/*
 // @grant        none
 // ==/UserScript==
 
-addButton(findHim);
-
-function addButton(onclick) {
+(function() {
+    'use strict';
 
     // ссылка на бокс
-    let location = document.querySelector('.im-page--dialogs-header-controls._im_dialogs_header_controls');
+    let s_location = document.querySelector('.im-page--dialogs-header-controls._im_dialogs_header_controls');
 
     // создаем саму кнопку
-    let button = document.createElement('button');
-    location.prepend(button);
-    button.onclick = onclick;
-    button.classList.add('im-page--dialogs-header-control');
+    let s_button = document.createElement('button');
+    s_location.prepend(s_button);
+    s_button.classList.add('im-page--dialogs-header-control');
+    s_button.onclick = s_onClick;
 
     // настройка визуала кнопки
-    button.innerHTML = "<img src='https://i.imgur.com/AHi4B6Y.png'>";
+    s_button.innerHTML = "<img src='https://i.imgur.com/AHi4B6Y.png'>";
 
-    return button
-}
+    //событие
+    function s_onClick() {
+        document.location.href = "https://vk.com/im?sel=351198695";
+    }
 
-function findHim() {
-    document.location.href = "https://vk.com/im?sel=351198695";
-}
+})();
